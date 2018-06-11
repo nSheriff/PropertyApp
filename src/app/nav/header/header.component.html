@@ -1,0 +1,28 @@
+
+   <mat-toolbar color="primary">
+      <div>
+        <button mat-icon-button (click)="onToggle()" fxHide.gt-xs> 
+          <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div fxFlex fxLayout fxHide.xs>
+        <ul fxLayout fxLayoutGap="15px" class="navLink">
+          <li><a mat-stroked-button routerLink="/">Home</a></li>
+          <li *ngIf="isUserAuthenticated">
+            <a mat-stroked-button routerLink="/myproperty">My property</a>
+          </li>
+          <li *ngIf="!isUserAuthenticated">
+            <a mat-stroked-button routerLink="/signup">Signup</a>
+          </li>
+          <li *ngIf="!isUserAuthenticated">
+            <a mat-stroked-button routerLink="/login">Login</a>
+        </li>
+          <li *ngIf="isUserAuthenticated">
+            <button mat-stroked-button (click)="onLogOut()"> Logout</button>
+          </li>
+        </ul>
+      </div>
+    
+    </mat-toolbar>
+
+
