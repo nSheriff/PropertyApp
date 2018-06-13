@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './nav/header/header.component';
 import { FooterComponent } from './nav/footer/footer.component';
 import { NavListComponent } from './nav/nav-list/nav-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { NavListComponent } from './nav/nav-list/nav-list.component';
     MaterialModule,
     AppRoutingModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
