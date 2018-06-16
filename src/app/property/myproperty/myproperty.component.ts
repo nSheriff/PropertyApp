@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MypropertService } from '../service/mypropert.service';
+import { Property } from '../../home/model/property';
+import { Observable } from 'rxjs';
+import { PropertyData } from '../../home/model/propertydata';
 
 @Component({
   selector: 'app-myproperty',
@@ -7,9 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MypropertyComponent implements OnInit {
 
-  constructor() { }
+  properties: Observable<PropertyData[]>;
+  constructor(private mypropertService: MypropertService) { }
 
   ngOnInit() {
+   this.properties = this.mypropertService.getProperties();
   }
 
 }

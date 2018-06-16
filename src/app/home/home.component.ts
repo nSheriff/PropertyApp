@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Property } from './model/property';
 import { PropertyService } from './service/property.service';
+import { MypropertService } from '../property/service/mypropert.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { PropertyService } from './service/property.service';
 export class HomeComponent implements OnInit {
 
   properties: Property[] = [];
-  constructor(private propertyService: PropertyService) { }
+  constructor(private propertyService: PropertyService,  private mypropertService: MypropertService) { }
 
   ngOnInit() {
      this.propertyService.getProperties().subscribe(
@@ -18,6 +19,10 @@ export class HomeComponent implements OnInit {
           console.log('Data: ' + data[0].address);
           this.properties = data;
         });
+  }
+
+  onAddToFavourite(property: Property) {
+      this.mypropertService.addToMyFavourite(property);
   }
 
 }

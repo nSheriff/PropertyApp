@@ -1,3 +1,60 @@
 .main-content {
     min-height: 470px;
 }
+
+.example-card {
+    width: 300px;
+  }
+  
+  .header-image {
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+  }
+
+  mat-card {
+    float: left;
+    max-width: 320px;
+    margin: 10px;
+  }
+
+  mat-card-title {
+    font-weight: bolder;
+    font-size: 10em
+  }
+
+  mat-card-subtitle {
+    font-weight: bolder;
+  }
+
+  .cardContent {
+    width: 100%;
+    text-align:center;
+  }
+
+  .cardFooter {
+    width: 100%;
+    bottom: 0;
+  }
+  mat-card-actions button {
+    width: 120px;
+  }
+
+mat-form-field
+{
+    width: 500px;
+}
+
+  @media only screen and (max-width: 599px) {
+    body {
+        background-color: lightblue;
+    }
+    mat-form-field
+    {
+        width: 100%;
+    }
+    .searhForm {
+     width: 90%;
+    }
+}
+  

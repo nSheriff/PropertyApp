@@ -15,7 +15,6 @@ export class PropertyDetailComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       console.log(params);
-      console.log(params.get('propertyId'));
       const propertyId = Number(params.get('id'));
       if (propertyId !== 0) {
           this.proService.getPropertyById(propertyId).subscribe(

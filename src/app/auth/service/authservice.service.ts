@@ -4,53 +4,64 @@ import { Router } from '@angular/router';
 
 import { User } from '../model/user';
 import { AuthData } from '../model/auth-data';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthserviceService {
-private user: User;
+private isValidUser = false;
 public userAuthEvent: any = new Subject<boolean>();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private afAuth: AngularFireAuth) { }
 
   signUpUser(authData: AuthData) {
     if (authData != null) {
-      this.user = {
-        email: authData.email,
-        userId: Math.round(Math.random() * 5000).toString()
-      };
-      this.userAuthEvent.next(true);
-      this.router.navigate(['/']);
+      this.afAuth.auth.
+      createUserWithEmailAndPassword(authData.email, authData.password).
+        then(sucess => {
+          console.log(sucess);
+          this.UserProcessed();
+        }).
+        catch (error => {
+          console.log(error);
+        });
     }
   }
 
   login(authData: AuthData) {
     if (authData != null) {
-      this.user = {
-        email: authData.email,
-        userId: Math.round(Math.random() * 5000).toString()
-      };
-      this.userAuthEvent.next(true);
-      this.router.navigate(['/']);
+      this.afAuth.auth.
+      signInWithEmailAndPassword(authData.email, authData.password).
+        then(sucess => {
+          console.log(sucess);
+          this.UserProcessed();
+        }).
+        catch (error => {
+          console.log(error);
+        });
     }
   }
 
   Logout() {
-    if ( this.user !== null) {
-      this.user = null;
-    }
+    this.isValidUser = false;
     this.userAuthEvent.next(false);
     this.router.navigate(['/login']);
   }
 
   getUser() {
-    return {...this.user};
+    // return {...this.user};
   }
 
   isAuthenticated() {
-    return this.user != null;
+    return this.isValidUser;
+  }
+
+  private UserProcessed() {
+    this.isValidUser = true;
+    this.userAuthEvent.next(true);
+    this.router.navigate(['/']);
   }
 
 }

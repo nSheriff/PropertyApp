@@ -1,4 +1,5 @@
 export interface PropertyData {
+    id: string;
     propertyId: number;
     address: string;
     postcode: string;
@@ -6,5 +7,6 @@ export interface PropertyData {
     pictureName: string;
     price: number;
     description: string;
+    propertyIsDeleted: boolean;
 
 }

@@ -1,8 +1,29 @@
 
 <div class="main-content">
-    <p>
-        myproperty works!
-      </p>
-</div>
+  <div fxLayout="column" fxLayoutAlign="center center">
+        <h1>My Favourite</h1>
+    </div>
+    <div class="cardContent">
+        <mat-card class="example-card"  *ngFor="let property of properties | async">
+            <mat-card-header>
+              <div mat-card-avatar class="header-image" [style.background-image]="'url(/assets/img/' + property.pictureName+ '.png)'"></div>
+              <mat-card-title>{{property.address}}</mat-card-title>
+              <mat-card-subtitle>{{property.city}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="assets/img/{{property.pictureName}}.png" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                {{property.description}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+                  <button mat-icon-button [routerLink]="['/propertydetail/',property.propertyId]">
+                      <mat-icon>markunread</mat-icon>
+                      <span>View detail</span> 
+                    </button>
+    
+            </mat-card-actions>
+          </mat-card>
+    </div>
 
 <app-footer></app-footer>
