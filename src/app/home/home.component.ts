@@ -20,27 +20,31 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
      this.propertyService.getProperties().subscribe(
         data => {
+          if (data.length > 0) {
           console.log('Data: ' + data[0].address);
           this.properties = data;
+          }
         });
   }
 
   onAddToFavourite(property: Property) {
     if (this.authSer.isAuthenticated()) {
       this.mypropertService.addToMyFavourite(property);
+      this.router.navigate(['/myproperty']);
     } else {
       this.router.navigate(['/login']);
     }
   }
 
   onSubmit(f: NgForm) {
-    console.log(f);
     console.log(f.value.search);
     if (f.value.search !== undefined && f.value.search !== '') {
-      this.propertyService.getPropertyByPostcode(f.value.search).subscribe(
+      this.propertyService.getPropertyByPostcode(f.value.search.toUpperCase()).subscribe(
         data => {
-          console.log('Data: ' + data[0].address);
-          this.properties = data;
+          if (data.length > 0) {
+            console.log('Data: ' + data[0].address);
+            this.properties = data;
+            }
         });
   }
   }

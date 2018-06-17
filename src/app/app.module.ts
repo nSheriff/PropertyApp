@@ -22,6 +22,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { environment } from '../environments/environment';
     PropertyDetailComponent,
     HeaderComponent,
     FooterComponent,
-    NavListComponent
+    NavListComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
