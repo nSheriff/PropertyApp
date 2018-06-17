@@ -4,9 +4,9 @@
     <h1>UK available properties</h1>
 <mat-form-field>
   <input type="search" matInput placeholder="Enter postcode"  ngModel name="search"  required
-  #emailValue="ngModel"/>
-  <mat-error *ngIf="emailValue.hasError('required')" >Email is required. Field should not be empty</mat-error>
-  <mat-error *ngIf="!emailValue.hasError('required')">Your email is not valid</mat-error>
+  #searchValue="ngModel"/>
+  <mat-error *ngIf="searchValue.hasError('required')" >Postcode is required. Field should not be empty</mat-error>
+  <mat-error *ngIf="!searchValue.hasError('required')">Postcode is not valid</mat-error>
 </mat-form-field>
 <button type="submit" mat-icon-button align="end">
     <mat-icon>search</mat-icon>

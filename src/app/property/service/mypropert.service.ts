@@ -26,7 +26,7 @@ export class MypropertService {
   }
 
   addToMyFavourite(selectedProperty: Property) {
-
+    this.db.collection('myproperty').add(selectedProperty);
   }
 
   deleteProperty(id: string) {

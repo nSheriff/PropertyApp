@@ -11,7 +11,8 @@ export const environment = {
     projectId: 'propertyapp-d2365',
     storageBucket: 'propertyapp-d2365.appspot.com',
     messagingSenderId: '276299107750'
-  }
+  },
+  apiUrl: 'https://propertappapi.azurewebsites.net/api/properties'
 };
 
 /*

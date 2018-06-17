@@ -11,7 +11,7 @@ const httpOptions = {
   })
 };
 
-const url = 'http://propertappapi.azurewebsites.net/api/properties'; // 'http://localhost:62626/api/properties';
+const url = 'https://propertappapi.azurewebsites.net/api/properties'; // 'http://localhost:62626/api/properties';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +27,10 @@ export class PropertyService {
 
   getPropertyById(propertyId: number) {
     return this.http.get<Property>(url + '/' + propertyId).pipe(catchError(this.handleError));
+  }
+
+  getPropertyByPostcode(postcode: string) {
+    return this.http.get<Property[]>(url + '/' + postcode).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
